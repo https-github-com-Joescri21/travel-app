@@ -52,6 +52,20 @@ export class CountryHome {
     return traducciones[continente] || continente;
   }
 
+  public paisSeleccionado = signal<Country | null>(null);
+
+
+//Ver Detalles del pais
+  verDetalles(id: string) {
+    // 1. Buscamos el país en nuestra lista actual usando el ID
+    const encontrado = this.countries().find(c => c.cca3 === id);
+    if (encontrado) {
+      this.paisSeleccionado.set(encontrado);
+      // 2. Aquí es donde el jueves dispararemos la petición a la API del Clima
+      console.log('Cargando clima para:', encontrado.capital[0]);
+    }
+  }
+
 
 
 }
