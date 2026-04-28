@@ -9,7 +9,7 @@ import { Country } from '../models/country.model';
 export class Countries {
 
   private http = inject(HttpClient);
-  private apiUrl = ' https://restcountries.com/v3.1';
+  private apiUrl = 'https://restcountries.com/v3.1';
 
  // Cambia el método de búsqueda para que use "translation"
 getCountryByName(name: string): Observable<Country[]> {

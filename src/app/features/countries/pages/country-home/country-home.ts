@@ -3,7 +3,9 @@ import { CommonModule, DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Countries } from '../../../../core/services/countries';
 import { Country } from '../../../../core/models/country.model';
-import { Router, RouterLink } from "@angular/router";
+import { Router} from "@angular/router";
+
+
 
 @Component({
   selector: 'country-home',
@@ -12,7 +14,6 @@ import { Router, RouterLink } from "@angular/router";
     CommonModule,
     FormsModule,
     DecimalPipe,
-    RouterLink
 ],
   templateUrl: './country-home.html',
   styles: ``,
