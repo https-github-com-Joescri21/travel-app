@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Countries } from '../../../../core/services/countries';
 import { Country } from '../../../../core/models/country.model';
 import { Router} from "@angular/router";
+import { CountryInfo } from "../../components/country-info/country-info";
 
 
 
@@ -13,7 +14,7 @@ import { Router} from "@angular/router";
   imports: [
     CommonModule,
     FormsModule,
-    DecimalPipe,
+    CountryInfo
 ],
   templateUrl: './country-home.html',
   styles: ``,
