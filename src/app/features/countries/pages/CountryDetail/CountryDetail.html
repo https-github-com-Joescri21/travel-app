@@ -4,7 +4,17 @@
     ← Volver al Explorador
   </button>
 
-  <country-info [country]="country()" />
+
+  <div class="min-h-screen bg-dark-bg p-10">
+
+    @if (pais()) {
+      <country-info [country]="pais()!" />
+    } @else {
+      <p class="text-neon-violet animate-pulse">Sincronizando con la base de datos de Nomadix...</p>
+    }
+
+  </div>
+
 
   <h1 class="text-neon-pink text-5xl animate-pulse">
     Espera mas información sobre tu viaje ...
