@@ -7,6 +7,9 @@ import { Country } from '../models/country.model';
   providedIn: 'root'
 })
 export class Countries {
+  getCountryByCode(countryId: string): Observable<Country> {
+    return this.http.get<Country>(`${this.apiUrl}/alpha/${countryId}`);
+  }
 
   private http = inject(HttpClient);
   private apiUrl = 'https://restcountries.com/v3.1';

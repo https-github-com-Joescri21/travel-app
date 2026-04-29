@@ -7,8 +7,7 @@ import { CountryHome } from "./features/countries/pages/country-home/country-hom
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet,
-    CountryHome
+    RouterOutlet
 ],
   templateUrl: './app.html',
   styleUrl: './app.scss'

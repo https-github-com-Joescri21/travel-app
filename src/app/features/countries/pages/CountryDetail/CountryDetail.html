@@ -1,0 +1,19 @@
+<section class="min-h-screen bg-black p-8 flex flex-col gap-8">
+
+  <button routerLink="/" class="text-neon-cyan hover:underline self-start">
+    ← Volver a la aventura
+  </button>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    @if (selectCountry()) {
+      <country-info [country]="selectCountry()!" />
+    }
+
+    <div class="bg-neutral-900 border border-dashed border-neon-cyan p-10 rounded-2xl flex items-center justify-center">
+      <p class="text-neon-cyan animate-pulse font-orbitron">
+        Sincronizando satélites meteorológicos...
+      </p>
+    </div>
+  </div>
+
+</section>
