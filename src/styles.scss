@@ -5,11 +5,16 @@
 @plugin "daisyui";
 
 @theme {
-  /* Aquí definimos tus colores neón para usarlos como clases de Tailwind */
-  --color-neon-cyan: #00f2ff;
-  --color-neon-pink: #ff007f;
-  --color-neon-violet: #9d00ff;
-  --color-dark-bg: #0a0a0a;
+
+  /* Paleta */
+  --color-pegasus-dark: #0f172a;    /* Deep Sea (Slate 950) */
+  --color-pegasus-card: #1e293b;    /* Fondo de tarjetas (Slate 800) */
+  --color-pegasus-accent: #0ea5e9;  /* Azul Cielo (Sky 500) */
+  --color-pegasus-text: #f8fafc;    /* Blanco Nube */
+  --color-pegasus-muted: #94a3b8;   /* Gris Azulado */
+
+
+
 
   /* Esto nos permitirá usar fuentes personalizadas después */
   --font-orbitron: "Orbitron", sans-serif;

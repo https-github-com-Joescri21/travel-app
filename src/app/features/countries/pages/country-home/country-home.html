@@ -1,35 +1,38 @@
-<section class="min-h-screen bg-dark-bg p-8 font-montserrat text-white">
+<section class="min-h-screen bg-pegasus-dark p-8 font-montserrat text-pegasus-text">
 
   <div class="text-center mb-10">
-    <h1 class="font-orbitron text-5xl md:text-6xl text-neon-violet tracking-[0.2em] drop-shadow-[0_0_15px_rgba(157,0,255,0.6)]">
+    <h1 class="font-orbitron text-5xl md:text-6xl font-black tracking-tighter text-white drop-shadow-md">
       NOMADIX
     </h1>
-    <p class="font-montserrat text-neon-cyan text-sm md:text-base tracking-[0.3em] uppercase mt-2">
+    <p class="font-montserrat text-pegasus-accent text-sm md:text-base tracking-[0.3em] uppercase mt-2">
       El buscador de tu próxima aventura
     </p>
   </div>
 
   <div class="max-w-md mx-auto mb-12">
-    <div class="join w-full shadow-[0_0_15px_rgba(0,242,255,0.2)]">
-      <input
-        [(ngModel)]="searchTerm"
-        (keyup.enter)="buscarPais()"
-        class="input input-bordered join-item w-full bg-neutral-900 border-neon-cyan focus:border-neon-cyan"
-        placeholder="Escribe un país (ej: Mexico)..." />
-      <button
-        (click)="buscarPais()"
-        class="btn btn-primary join-item bg-neon-cyan border-neon-cyan text-black hover:bg-cyan-400">
-        BUSCAR
-      </button>
-    </div>
+  <!-- Agregamos rounded-xl y cambiamos el shadow por uno más profundo y menos neón -->
+  <div class="join w-full shadow-2xl shadow-black/50 rounded-xl overflow-hidden border border-slate-700/50">
+    <input
+      [(ngModel)]="searchTerm"
+      (keyup.enter)="buscarPais()"
+      class="input input-bordered join-item w-full text-white placeholder-slate-500 bg-pegasus-card/80
+             border-none focus:outline-none focus:bg-pegasus-card transition-all"
+      placeholder="Escribe un país (ej: Mexico)..." />
+
+    <button
+      (click)="buscarPais()"
+      class="btn join-item bg-pegasus-accent hover:bg-sky-400 border-none text-slate-950 font-black px-8 transition-all duration-300 ease-in-out hover:tracking-widest">
+      BUSCAR
+    </button>
   </div>
+</div>
 
   @if (countries().length === 0) {
     <div class="text-center mt-20 animate-fade-in">
       <h2 class="text-neon-violet font-orbitron text-2xl mb-4">
         ¿DÓNDE SERÁ TU PRÓXIMA AVENTURA?
       </h2>
-      <p class="text-gray-400 max-w-md mx-auto">
+      <p class="text-pegasus max-w-md mx-auto text-center text-lg leading-relaxed">
         Nosotros te ayudamos a que esa aventura sea posible.
         Solo coloca el país a donde quieres ir y armaremos el viaje de tus sueños.
       </p>

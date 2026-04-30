@@ -40,3 +40,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Secretos de la API
+src/environments/environment.ts

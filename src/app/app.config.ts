@@ -3,12 +3,21 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes),
-    provideHttpClient()
+    provideHttpClient(),
+
+     //HashLocationStrategy
+
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy,
+    }
+
   ]
 };
