@@ -34,7 +34,9 @@ export class WeatherInfo {
         this.weatherData.set(data);
         this.isLoading.set(false);
       },
-      error: () => this.isLoading.set(false)
+      error: () => {
+        this.isLoading.set(false)
+      }
     });
   }
 
