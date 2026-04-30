@@ -14,13 +14,13 @@
   <div class="join w-full shadow-2xl shadow-black/50 rounded-xl overflow-hidden border border-slate-700/50">
     <input
       [(ngModel)]="searchTerm"
-      (keyup.enter)="buscarPais()"
+      (keyup.enter)="countrysearch()"
       class="input input-bordered join-item w-full text-white placeholder-slate-500 bg-pegasus-card/80
              border-none focus:outline-none focus:bg-pegasus-card transition-all"
       placeholder="Escribe un país (ej: Mexico)..." />
 
     <button
-      (click)="buscarPais()"
+      (click)="countrysearch()"
       class="btn join-item bg-pegasus-accent hover:bg-sky-400 border-none text-slate-950 font-black px-8 transition-all duration-300 ease-in-out hover:tracking-widest">
       BUSCAR
     </button>

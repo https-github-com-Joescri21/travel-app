@@ -28,19 +28,21 @@ export class CountryHome {
   public searchTerm= '';
   public error = signal<string | null>(null);
 
-  buscarPais() {
-    if (!this.searchTerm) return;
+  countrysearch(){
+    const search = this.searchTerm.trim();
 
-    this.countryService.getCountryByName(this.searchTerm).subscribe({
+    //No gastar peticiones en texto vacios o muy cortos
+    if( search.length < 3) return;
+
+    this.countryService.getCountryByName(search).subscribe({
       next: (data) => {
         this.countries.set(data);
-        this.error.set(null); // Limpiamos el error si la búsqueda es exitosa
+        this.error.set(null);
       },
-      error: (err) => {
-        this.error.set(`¡Error! El país "${this.searchTerm}" no existe en nuestra base de datos.`);
-      this.countries.set([]);
+      error: () => {
+        this.error.set('No encontramos ese destino. ¡Prueba con otro!');
       }
-    })
+    });
   }
 
   // Traduccion de continentes

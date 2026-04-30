@@ -1,0 +1,36 @@
+<!-- Infromación del clima -->
+
+<section class="bg-pegasus-card/50 border border-slate-800 p-6 rounded-3xl shadow-xl min-h-[180px] flex flex-col justify-center transition-all hover:border-pegasus-accent/30">
+
+  @if (isLoading()) {
+    <div class="flex flex-col items-center gap-3">
+      <div class="w-8 h-8 border-4 border-pegasus-accent border-t-transparent rounded-full animate-spin"></div>
+      <p class="text-pegasus-muted text-[10px] uppercase tracking-[0.2em] font-bold">Consultando satélites...</p>
+    </div>
+  } @else if (weatherData()) {
+    <div class="flex items-center justify-between">
+      <div>
+        <h4 class="text-pegasus-muted text-xs font-bold uppercase tracking-widest mb-2">Clima en la Capital</h4>
+        <div class="flex items-baseline gap-2">
+          <span class="text-5xl font-black text-white tracking-tighter">
+            {{ weatherData().temperature }}
+          </span>
+          <span class="text-2xl font-bold text-pegasus-accent">°C</span>
+        </div>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <!-- Emoji dinámico o icono de clima -->
+        <span class="text-6xl drop-shadow-[0_0_15px_rgba(14,165,233,0.4)]">
+          {{ weatherData().weathercode <= 3 ? '☀️' : '☁️' }}
+        </span>
+        <span class="text-pegasus-muted text-[10px] mt-2 font-medium">
+          Viento: {{ weatherData().windspeed }} km/h
+        </span>
+      </div>
+    </div>
+  } @else {
+    <p class="text-slate-500 text-center text-xs italic">No se pudo obtener el reporte meteorológico.</p>
+  }
+
+</section>

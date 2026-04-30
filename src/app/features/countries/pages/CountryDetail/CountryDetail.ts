@@ -4,6 +4,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Country } from '../../../../core/models/country.model';
 import { Countries } from '../../../../core/services/countries';
 import { CommonModule } from '@angular/common';
+import { WeatherInfo } from "../../components/weather-info/weather-info";
 
 
 @Component({
@@ -12,7 +13,8 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
     CountryInfo,
-    RouterLink
+    RouterLink,
+    WeatherInfo
 ],
   templateUrl: './CountryDetail.html',
 })

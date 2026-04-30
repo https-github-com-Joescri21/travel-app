@@ -37,7 +37,10 @@
          <div class="flex flex-col items-center gap-4">
             <div class="w-12 h-12 border-4 border-pegasus-accent border-t-transparent rounded-full animate-spin"></div>
             <p class="text-pegasus-muted font-medium tracking-wide uppercase text-xs">
-               Conectando con Open-Meteo...
+              <weather-info
+                [lat]="selectCountry()?.latlng?.[0] || 0"
+                [lng]="selectCountry()?.latlng?.[1] || 0"
+              />
             </p>
          </div>
       </div>

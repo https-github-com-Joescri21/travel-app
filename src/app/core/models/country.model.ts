@@ -6,6 +6,7 @@ translations: any;
     official: string;
   };
   cca3: string;
+  latlng: number[];
   capital: string[];
   flags: { svg: string; alt: string };
   population: number;
