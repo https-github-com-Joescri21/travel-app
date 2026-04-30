@@ -1,30 +1,61 @@
-<section class="min-h-screen bg-black p-8 flex flex-col gap-8">
 
-  <button routerLink="/" class="text-neon-cyan hover:underline self-start">
-    ← Volver a la aventura
+<section class="min-h-screen bg-pegasus-dark p-6 md:p-12 flex flex-col gap-10">
+
+  <!-- Botón Volver -->
+  <button
+    routerLink="/"
+    class="flex items-center gap-2 text-pegasus-muted hover:text-pegasus-accent transition-colors self-start font-bold uppercase tracking-widest text-xs">
+    <span class="text-lg">←</span> Volver a la exploración
   </button>
 
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+
+    <!-- Columna Izquierda: Identidad del País (4 columnas) -->
     @if (selectCountry()) {
-      <div class="inline-block mb-10">
-        <h1 class="text-5xl md:text-7xl font-orbitron text-white uppercase tracking-tighter italic">
-          {{ selectCountry()?.translations?.['spa']?.common }}
-        </h1>
+      <div class="lg:col-span-5 flex flex-col">
+        <div class="relative mb-8">
+          <h1 class="text-6xl md:text-8xl font-black text-white tracking-tighter leading-none">
+            {{ selectCountry()?.translations?.['spa']?.common }}
+          </h1>
+          <!-- Línea Pegasus: reemplaza el degradado violeta por el azul cielo sólido -->
+          <div class="h-2 w-32 bg-pegasus-accent mt-4 rounded-full shadow-lg shadow-sky-500/20"></div>
+        </div>
 
-        <div class="h-1.5 mb-6 w-full bg-gradient-to-r from-neon-violet to-transparent mt-2 rounded-full shadow-[0_0_20px_#9d00ff]"></div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          @if (selectCountry()) {
-          <country-info [country]="selectCountry()!" />
-          }
+        <!-- Tarjeta de Información General -->
+        <div class="bg-pegasus-card border border-slate-800 p-8 rounded-3xl shadow-2xl">
+           <country-info [country]="selectCountry()!" />
         </div>
       </div>
     }
 
-    <div class="bg-neutral-900 border border-dashed border-neon-cyan p-10 rounded-2xl flex items-center justify-center">
-      <p class="text-neon-cyan animate-pulse font-orbitron">
-        Sincronizando satélites meteorológicos...
-      </p>
+    <!-- Columna Derecha: El "Hub" de Componentes (7 columnas) -->
+    <div class="lg:col-span-7 flex flex-col gap-6">
+
+      <!-- Slot para el Componente de Clima (Open-Meteo) -->
+      <div class="bg-slate-900/50 border border-dashed border-slate-700 p-8 rounded-3xl flex flex-col items-center justify-center min-h-[250px]">
+         <!-- Aquí inyectaremos <weather-info /> -->
+         <div class="flex flex-col items-center gap-4">
+            <div class="w-12 h-12 border-4 border-pegasus-accent border-t-transparent rounded-full animate-spin"></div>
+            <p class="text-pegasus-muted font-medium tracking-wide uppercase text-xs">
+               Conectando con Open-Meteo...
+            </p>
+         </div>
+      </div>
+
+      <!-- Grid para futuros componentes (Moneda, Lugares, etc.) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+         <div class="bg-pegasus-card/40 border border-slate-800 p-6 rounded-2xl h-40 flex items-center justify-center">
+            <span class="text-slate-600 text-xs font-bold uppercase tracking-widest italic text-center">
+               Próximamente:<br>Conversor de Moneda
+            </span>
+         </div>
+         <div class="bg-pegasus-card/40 border border-slate-800 p-6 rounded-2xl h-40 flex items-center justify-center">
+            <span class="text-slate-600 text-xs font-bold uppercase tracking-widest italic text-center">
+               Próximamente:<br>Lugares de Interés
+            </span>
+         </div>
+      </div>
+
     </div>
   </div>
 

@@ -38,15 +38,19 @@
       </p>
     </div>
   } @else {
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 ">
+    <!-- Boton de la tarjeta -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       @for (item of countries(); track item.cca3) {
-        <div class="bg-neutral-900 border border-neon-pink p-6 rounded-xl shadow-[0_0_10px_rgba(255,0,127,0.1)] transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(0,242,255,0.4)]">
+        <div class="bg-pegasus-card border border-slate-800 p-6 rounded-2xl shadow-xl transition-all duration-300 hover:scale-[1.02] hover:border-pegasus-accent/40 group">
+
+          <!-- Componente de información pura -->
           <country-info [country]="item" />
-          <div class="mt-6">
+
+          <div class="mt-8">
             <button
               (click)="verDetalles(item.cca3)"
-              class="btn btn-outline btn-xs border-neon-cyan text-neon-cyan hover:bg-neon-cyan hover:text-black w-full font-orbitron">
-              Ver Aventura
+              class="btn bg-transparent border-2 border-pegasus-accent text-pegasus-accent hover:bg-pegasus-accent hover:text-slate-950 w-full font-bold tracking-widest transition-all rounded-lg">
+              VER AVENTURA
             </button>
           </div>
         </div>
@@ -54,7 +58,10 @@
     </div>
   }
 
-  <div *ngIf="error()" class="alert alert-error bg-red-950 border-red-500 text-red-200 mb-6">
-    <span>{{ error() }}</span>
-  </div>
-</section>
+  <!-- Mensaje de Error (País no encontrado) -->
+    <div *ngIf="error()" class="mt-8 flex items-center justify-center animate-bounce">
+      <div class="bg-red-500/10 border border-red-500/50 text-red-400 px-6 py-4 rounded-xl flex items-center gap-3">
+        <span class="text-xl">⚠️</span>
+        <span class="font-bold tracking-tight">Vaya, parece que ese destino no está en nuestro radar. ¡Intenta con otro!</span>
+      </div>
+    </div>
