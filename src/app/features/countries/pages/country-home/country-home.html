@@ -1,7 +1,7 @@
-<section class="min-h-screen bg-pegasus-dark p-8 font-montserrat text-pegasus-text">
+<section class="min-h-screen bg-pegasus-dark pt-2 p-4 font-montserrat text-pegasus-text">
 
-  <div class="text-center mb-10">
-    <h1 class="font-orbitron text-5xl md:text-6xl font-black tracking-tighter text-white drop-shadow-md">
+  <div class="text-center mb-4">
+    <h1 class="font-orbitron text-4xl md:text-5xl font-black tracking-tighter text-pegasus-highlight drop-shadow-md">
       NOMADIX
     </h1>
     <p class="font-montserrat text-pegasus-accent text-sm md:text-base tracking-[0.3em] uppercase mt-2">
@@ -9,19 +9,19 @@
     </p>
   </div>
 
-  <div class="max-w-md mx-auto mb-12">
+  <div class="max-w-md mx-auto mb-4">
   <!-- Agregamos rounded-xl y cambiamos el shadow por uno más profundo y menos neón -->
   <div class="join w-full shadow-2xl shadow-black/50 rounded-xl overflow-hidden border border-slate-700/50">
     <input
       [(ngModel)]="searchTerm"
       (keyup.enter)="countrysearch()"
-      class="input input-bordered join-item w-full text-white placeholder-slate-500 bg-pegasus-card/80
+      class="input input-bordered join-item w-full text-pegasus-highlight placeholder-slate-500 bg-pegasus-card/80
              border-none focus:outline-none focus:bg-pegasus-card transition-all"
       placeholder="Escribe un país (ej: Mexico)..." />
 
     <button
       (click)="countrysearch()"
-      class="btn join-item bg-pegasus-accent hover:bg-sky-400 border-none text-slate-950 font-black px-8 transition-all duration-300 ease-in-out hover:tracking-widest">
+      class="btn join-item bg-pegasus-accent hover:bg-sky-400 border-none text-white font-black px-8 transition-all duration-300 ease-in-out hover:tracking-widest">
       BUSCAR
     </button>
   </div>
@@ -41,12 +41,12 @@
     <!-- Boton de la tarjeta -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       @for (item of countries(); track item.cca3) {
-        <div class="bg-pegasus-card border border-slate-800 p-6 rounded-2xl shadow-xl transition-all duration-300 hover:scale-[1.02] hover:border-pegasus-accent/40 group">
+        <div class="bg-pegasus-card border border-pegasus-border p-6 rounded-2xl shadow-xl transition-all duration-300 hover:scale-[1.02] hover:border-pegasus-accent/40 group">
 
           <!-- Componente de información pura -->
           <country-info [country]="item" />
 
-          <div class="mt-8">
+          <div class="mt-4">
             <button
               (click)="verDetalles(item.cca3)"
               class="btn bg-transparent border-2 border-pegasus-accent text-pegasus-accent hover:bg-pegasus-accent hover:text-slate-950 w-full font-bold tracking-widest transition-all rounded-lg">

@@ -6,12 +6,17 @@
 
 @theme {
 
-  /* Paleta */
-  --color-pegasus-dark: #0f172a;    /* Deep Sea (Slate 950) */
-  --color-pegasus-card: #1e293b;    /* Fondo de tarjetas (Slate 800) */
-  --color-pegasus-accent: #0ea5e9;  /* Azul Cielo (Sky 500) */
-  --color-pegasus-text: #f8fafc;    /* Blanco Nube */
-  --color-pegasus-muted: #94a3b8;   /* Gris Azulado */
+  /* Paleta Atlas Light - Sustimos los valores Hex del anterio los nombre se quedaron */
+
+  --color-pegasus-dark: #f8fafc;    /* Slate 50 (Fondo Principal) */
+  --color-pegasus-card: #ffffff;    /* Blanco Puro (Fondo de tarjetas) */
+  --color-pegasus-accent: #0284c7;  /* Sky 600 (Azul Corporativo más legible) */
+  --color-pegasus-text: #0f172a;    /* Slate 950 (Texto Principal) */
+  --color-pegasus-muted: #64748b;   /* Slate 500 (Gris para secundarios) */
+  --color-pegasus-highlight: #0369a1; /* Azul un poco más oscuro (Sky 700) */
+
+  /* Extras para el toque profesional */
+  --color-pegasus-border: #e2e8f0;  /* Slate 200 (Bordes sutiles) */
 
 
 
