@@ -1,0 +1,65 @@
+<div class="bg-white border border-[var(--color-pegasus-border)] p-7 rounded-3xl shadow-xl shadow-slate-100 mt-6">
+
+  <div class="flex items-center justify-between mb-6">
+    <div class="flex items-center gap-3">
+      <span class="text-2xl">🏛️</span>
+      <h3 class="text-xl font-extrabold text-[var(--color-pegasus-text)] tracking-tight">
+        Lugares Imperdibles
+      </h3>
+    </div>
+    <span class="text-[10px] font-bold bg-slate-100 text-slate-500 px-3 py-1 rounded-full uppercase tracking-wider">
+      Top 20 Nacional
+    </span>
+  </div>
+
+  @if (cargando) {
+    <div class="flex flex-col items-center justify-center py-12 gap-3 text-slate-400">
+      <div class="animate-spin rounded-full h-8 w-8 border-4 border-slate-200 border-t-[var(--color-pegasus-accent)]"></div>
+      <p class="text-xs font-bold uppercase tracking-wider">Buscando las mejores joyas del país...</p>
+    </div>
+  } @else {
+
+    @if (attractions.length === 0) {
+      <div class="text-center py-12 text-slate-400">
+        <p class="text-sm font-medium">No se encontraron atractivos registrados para este destino.</p>
+      </div>
+    } @else {
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        @for (lugar of attractions; track lugar.placeId) {
+          <div class="p-5 bg-[var(--color-pegasus-card)] border border-[var(--color-pegasus-border)] rounded-2xl flex flex-col justify-between transition-all duration-300 hover:border-[var(--color-pegasus-accent)] hover:shadow-xl hover:shadow-slate-200/50 group">
+
+            <div>
+              <span class="text-[9px] uppercase tracking-widest text-[var(--color-pegasus-accent)] font-black">
+                📍 {{ lugar.category.replace('.', ' / ') }}
+              </span>
+
+              <h4 class="font-extrabold text-[var(--color-pegasus-text)] group-hover:text-[var(--color-pegasus-accent)] transition-colors text-base mt-1 leading-snug">
+                {{ lugar.name }}
+              </h4>
+
+              @if (lugar.address) {
+                <p class="text-xs text-[var(--color-pegasus-muted)] font-medium mt-2 line-clamp-2">
+                  {{ lugar.address }}
+                </p>
+              }
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-50 flex justify-between items-center">
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-tight">
+                Acceso Público
+              </span>
+              <button class="text-xs font-black text-[var(--color-pegasus-accent)] hover:underline transition-all flex items-center gap-1">
+                Explorar 🔍
+              </button>
+            </div>
+
+          </div>
+        }
+
+      </div>
+    }
+  }
+
+</div>

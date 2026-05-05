@@ -5,6 +5,7 @@ translations: any;
     common: string;
     official: string;
   };
+  cca2: string;
   cca3: string;
   latlng: number[];
   capital: string[];

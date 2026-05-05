@@ -57,3 +57,18 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+
+
+## Resumen de Gemi.
+
+Resumen de hoy para tu Cuaderno (Checkpoint #1)
+Proyecto: Nomadix (Travel App) - MVP Fase 1
+Fecha: 2 de Mayo, 2026
+Estado Visual: Paleta Atlas Light implementada (Fondo: #f8fafc, Cards: #ffffff, Texto: #0f172a, Acento: #0284c7).
+Paso 1 (Seguridad): Completado. Footer con atribuciones de API integrado en el app.component.html.
+Paso 2 (Velocidad): Lógica de LocalStorage explicada y lista para implementar en servicios.
+Próximo Objetivo: Integración de OpenTripMap (Parques, Museos y Plazas).
+
+Repositorio: https://github.com/https-github-com-Joescri21/travel-app

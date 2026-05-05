@@ -5,6 +5,7 @@ import { Country } from '../../../../core/models/country.model';
 import { Countries } from '../../../../core/services/countries';
 import { CommonModule } from '@angular/common';
 import { WeatherInfo } from "../../components/weather-info/weather-info";
+import { CountryAttractions } from "../../components/country-attractions/country-attractions";
 
 
 @Component({
@@ -14,7 +15,8 @@ import { WeatherInfo } from "../../components/weather-info/weather-info";
     CommonModule,
     CountryInfo,
     RouterLink,
-    WeatherInfo
+    WeatherInfo,
+    CountryAttractions
 ],
   templateUrl: './CountryDetail.html',
 })
@@ -24,6 +26,7 @@ export class CountryDetail implements OnInit{
 
   private route = inject(ActivatedRoute);
   private countryService = inject(Countries);
+
 
   ngOnInit(): void {
     const countryId = this.route.snapshot.paramMap.get('id');
