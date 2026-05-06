@@ -7,7 +7,6 @@ import { CommonModule } from '@angular/common';
 import { WeatherInfo } from "../../components/weather-info/weather-info";
 import { CountryAttractions } from "../../components/country-attractions/country-attractions";
 
-
 @Component({
   selector: 'app-country-detail',
   standalone: true,

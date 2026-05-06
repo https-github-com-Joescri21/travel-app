@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, input, OnInit, effect } from '@angular/core';
+import { Component, inject, OnInit, SimpleChanges, Input, OnChanges, input } from '@angular/core';
 import { Geoapify } from '../../../../core/services/geoapify';
 import { Country } from '../../../../core/models/country.model';
 
@@ -13,37 +13,34 @@ import { Country } from '../../../../core/models/country.model';
 })
 export class CountryAttractions implements OnInit {
 
-  private geoapifyService = inject(Geoapify);
+  private goeapifyService = inject(Geoapify);
 
-  countrycode = input.required<Country>();
+  @Input() countryCode: string = '';
 
   public attractions: any[] = [];
-  public cargando: boolean = false;
-
-  constructor() {
-    effect(() => {
-      if (this.countrycode()) {
-        this.cargarLugares();
-      }
-    });
-  }
+  public isLoading: boolean = false;
 
   ngOnInit(): void {
-    // No es necesario aquí, ya que effect maneja los cambios
+    console.log('🧪 Componente hijo montado. Código recibido inicialmente:', this.countryCode);
+
+
   }
 
-  private cargarLugares(): void {
-    this.cargando = true;
-    this.geoapifyService.getTopCountryAttractions(this.countrycode().cca2, 20).subscribe({
-      next: (data) => {
-        this.attractions = data;
-        this.cargando = false;
-      },
-      error: (err) => {
-        console.error('Error cargando atractivos en el componente:', err);
-        this.cargando = false;
-      }
-    });
-  }
+  private runLoandTest(): void {
+    setTimeout(() => {
+      this.isLoading = true;
 
+      this.goeapifyService.getTopCountryAttractions(this.countryCode, 20).subscribe({
+        next: (data) => {
+          this.attractions = data;
+          this.isLoading = false;
+          console.log('✅ API Geoapify respondió con éxito. Registros:', data.length);
+        },
+        error: (err) => {
+          console.error('❌ Error en la petición de Geoapify:', err);
+          this.isLoading = false;
+        }
+      });
+    }, 0);
+  }
 }
