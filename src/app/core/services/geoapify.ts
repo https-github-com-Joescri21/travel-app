@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { map, Observable } from 'rxjs';
@@ -13,33 +13,29 @@ export class Geoapify {
 
   private baseUrl = 'https://api.geoapify.com/v2/places';
 
-  getTopCountryAttractions(countryCode: string, limit: number = 20): Observable<any[]> {
-
-    const category = 'tourism.sights,entertainment.culture,heritage';
-    const cca2 = countryCode.substring(0, 2).toLowerCase()
-    const filter = `countrycode:${cca2}`;
-
+  getTopCountryAttractions(lat: number, lng: number, limit: number = 20): Observable<any[]> {
     const apiKey = environment.geoapifyApiKey;
 
-    const url = `${this.baseUrl}?categories=${category}&filter=${filter}&bias=popularity&limit=${limit}&apiKey=${apiKey}`;
+    const params = new HttpParams()
+      .set('categories', 'tourism.sights,entertainment.culture,heritage')
+      .set('bias', `proximity:${lng},${lat}`)
+      .set('limit', `${limit}`)
+      .set('apiKey', apiKey);
 
-    // 🧪 LA PRUEBA REINA: Imprimimos la URL real en la consola
-    console.log('🔗 URL generada para Geoapify:', url);
+    const requestUrl = `${this.baseUrl}?${params.toString()}`;
+    console.log('🔗 URL FINAL ENVIADA:', requestUrl);
 
-    return this.http.get<any>(url).pipe(
+    return this.http.get<any>(this.baseUrl, { params }).pipe(
       map(response => {
-
-        console.log('📦 Respuesta cruda de Geoapify:', response);
-
-        return response.features.map((lugar: any) => ({
-          name: lugar.properties.name || lugar.properties.formatted, // Si no tiene nombre comercial, usa la dirección legible
-          category: lugar.properties.categories[0], // Guardamos su categoría principal
-          address: lugar.properties.address_line2, // Su dirección o zona
-          placeId: lugar.properties.place_id // ID único para que el @for de Angular no se confunda
+        const features = Array.isArray(response.features) ? response.features : [];
+        return features.map((lugar: any) => ({
+          name: lugar.properties.name || lugar.properties.formatted,
+          category: lugar.properties.categories?.[0],
+          address: lugar.properties.address_line2,
+          placeId: lugar.properties.place_id
         }));
       })
     );
-
   }
 
 }

@@ -23,13 +23,18 @@ export class WeatherInfo {
   constructor() {
 
     effect(() => {
-      this.fetchWeather();
+      const lat = this.lat();
+      const lng = this.lng();
+
+      Promise.resolve().then(() => {
+        this.fetchWeather(lat, lng);
+      });
     });
   }
 
-  fetchWeather() {
+  fetchWeather(lat: number, lng: number) {
     this.isLoading.set(true);
-    this.weatherService.getWeather(this.lat(), this.lng()).subscribe({
+    this.weatherService.getWeather(lat, lng).subscribe({
       next: (data) => {
         this.weatherData.set(data);
         this.isLoading.set(false);

@@ -30,21 +30,24 @@
 
     <!-- Columna Derecha: El "Hub" de Componentes (7 columnas) -->
     <div class="lg:col-span-7 flex flex-col gap-6">
+      @if (selectCountry()) {
+        <!-- Slot para el Componente de Clima (Open-Meteo) -->
+        <div class="bg-slate-900/50 border border-dashed border-pegasus-border p-6 rounded-3xl flex flex-col items-center justify-center min-h-[250px]">
+          <weather-info
+            [lat]="selectCountry()!.latlng[0]"
+            [lng]="selectCountry()!.latlng[1]"
+          />
+        </div>
 
-      <!-- Slot para el Componente de Clima (Open-Meteo) -->
-      <div class="bg-slate-900/50 border border-dashed border-pegasus-border p-6 rounded-3xl flex flex-col items-center justify-center min-h-[250px]">
-        <weather-info
-          [lat]="selectCountry()?.latlng?.[0] || 0"
-          [lng]="selectCountry()?.latlng?.[1] || 0"
-        />
-      </div>
-
-      <!-- Lugares -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        @if (selectCountry()) {
-          <country-attractions [countryCode]="selectCountry()!.cca2" />
-        }
-      </div>
+        <!-- Lugares -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <country-attractions
+            [countryCode]="selectCountry()!.cca2"
+            [lat]="selectCountry()!.latlng[0]"
+            [lng]="selectCountry()!.latlng[1]"
+          />
+        </div>
+      }
     </div>
   </div>
 
