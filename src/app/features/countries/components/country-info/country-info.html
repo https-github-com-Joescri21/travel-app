@@ -23,28 +23,32 @@
     <p class="text-sm flex items-center gap-2">
       <span class="text-pegasus-accent">📍</span>
       <span class="text-pegasus-muted font-medium">Capital:</span>
-      <span class="text-pegassus-highlight">{{ country().capital }}</span>
+      <span class="text-pegassus-highlight font-bold">{{ country().capital }}</span>
     </p>
 
     <p class="text-sm flex items-center gap-2">
       <span class="text-pegasus-accent">🌍</span>
       <span class="text-pegasus-muted font-medium">Continente:</span>
-      <span class="text-pegassus-highlight">{{ traducirContinente(country().continents[0]) }}</span>
+      <span class="text-pegassus-highlight font-bold">{{ traducirContinente(country().continents[0]) }}</span>
     </p>
 
     <p class="text-sm flex items-center gap-2">
       <span class="text-pegasus-accent">👥</span>
       <span class="text-pegasus-muted font-medium">Población:</span>
-      <span class="text-pegassus-highlight">{{ country().population | number }}</span>
+      <span class="text-pegassus-highlight font-bold">{{ country().population | number }}</span>
     </p>
 
-    <p *ngIf="country().currencies" class="text-sm flex items-center gap-2">
+    @if (country().currencies) {
+    <p class="text-sm flex items-center gap-2">
       <span class="text-pegasus-accent">💰</span>
       <span class="text-pegasus-muted font-medium">Moneda:</span>
-      <span class="text-pegassus-highlight" *ngFor="let curr of country().currencies | keyvalue">
+      @for (curr of country().currencies | keyvalue; track curr.key) {
+      <span class="text-pegassus-highlight font-bold">
         {{ $any(curr.value).name }} ({{ $any(curr.value).symbol }})
       </span>
+      }
     </p>
+    }
   </div>
 
 } @else {
@@ -53,5 +57,3 @@
     <p class="text-pegasus-accent mt-4 font-bold tracking-widest uppercase text-xs">Sincronizando con satélites...</p>
   </div>
 }
-
-

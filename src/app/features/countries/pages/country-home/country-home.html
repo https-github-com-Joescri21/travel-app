@@ -59,9 +59,9 @@
   }
 
   <!-- Mensaje de Error (País no encontrado) -->
-    <div *ngIf="error()" class="mt-8 flex items-center justify-center animate-bounce">
+    @if (error()) {
       <div class="bg-red-500/10 border border-red-500/50 text-red-400 px-6 py-4 rounded-xl flex items-center gap-3">
         <span class="text-xl">⚠️</span>
         <span class="font-bold tracking-tight">Vaya, parece que ese destino no está en nuestro radar. ¡Intenta con otro!</span>
       </div>
-    </div>
+  }
