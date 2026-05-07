@@ -6,6 +6,7 @@ import { Countries } from '../../../../core/services/countries';
 import { CommonModule } from '@angular/common';
 import { WeatherInfo } from "../../components/weather-info/weather-info";
 import { CountryAttractions } from "../../components/country-attractions/country-attractions";
+import { WeatherHistory } from "../../components/weather-history/weather-history";
 
 @Component({
   selector: 'app-country-detail',
@@ -15,7 +16,8 @@ import { CountryAttractions } from "../../components/country-attractions/country
     CountryInfo,
     RouterLink,
     WeatherInfo,
-    CountryAttractions
+    CountryAttractions,
+    WeatherHistory
 ],
   templateUrl: './CountryDetail.html',
 })
