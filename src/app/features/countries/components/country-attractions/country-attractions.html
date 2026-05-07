@@ -1,23 +1,57 @@
-<div style="border: 2px dashed #007bff; padding: 15px; margin-top: 15px; border-radius: 10px;">
-  <h3 style="color: #007bff; margin-top: 0;">🧪 modo prueba: country attractions</h3>
-
-  <p><strong>Código recibido del padre:</strong> {{ countryCode }}</p>
+<div class="mt-8">
+  <div class="flex items-center justify-between mb-8">
+    <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-3">
+      <span class="p-2 bg-blue-50 rounded-lg text-blue-600">🏛️</span>
+      Lugares Imperdibles
+    </h2>
+    <span class="px-4 py-1.5 bg-blue-50 text-blue-700 rounded-full text-xs font-bold uppercase tracking-widest">
+      {{ attractions().length }} sitios encontrados
+    </span>
+  </div>
 
   @if (isLoading()) {
-    <p style="color: orange; font-weight: bold;">⏳ Consultando lugares en Geoapify...</p>
-  } @else if (errorMessage()) {
-    <p style="color: #f87171; font-weight: bold;">❌ {{ errorMessage() }}</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 animate-pulse">
+      @for (i of [1,2,3,4]; track i) {
+        <div class="h-40 bg-gray-100 rounded-2xl border border-gray-100"></div>
+      }
+    </div>
   } @else {
-    <p><strong>Lugares encontrados:</strong> {{ attractions().length }}</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      @for (lugar of attractions(); track lugar.placeId) {
+        <div class="group bg-white border border-gray-100 p-5 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex gap-4 min-h-[160px] items-start">
 
-    @if (attractions().length === 0) {
-      <p>No se encontraron lugares cercanos.</p>
-    } @else {
-      <ul>
-        @for (lugar of attractions(); track lugar.placeId) {
-          <li>👉 {{ lugar.name }} ({{ lugar.address }})</li>
-        }
-      </ul>
-    }
+          <div class="w-14 h-14 flex-shrink-0 bg-blue-50 rounded-xl flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
+            <svg class="w-7 h-7 text-blue-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+          </div>
+
+          <div class="flex flex-col h-full overflow-hidden">
+            <div class="mb-2">
+              <span class="text-[10px] font-black uppercase tracking-widest text-blue-500 block mb-1">
+                {{ translateCategory(lugar.category) }}
+              </span>
+              <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2 leading-snug">
+                {{ lugar.name }}
+              </h3>
+            </div>
+
+            <div class="mt-auto">
+              <p class="text-sm text-gray-500 flex items-start gap-1 line-clamp-2">
+                <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                </svg>
+                {{ lugar.address }}
+              </p>
+            </div>
+          </div>
+
+        </div>
+      } @empty {
+        <div class="col-span-full py-16 text-center bg-gray-50 rounded-2xl border-2 border-dashed border-gray-200">
+          <p class="text-gray-400 font-medium">No se encontraron lugares en esta zona 🗺️</p>
+        </div>
+      }
+    </div>
   }
 </div>

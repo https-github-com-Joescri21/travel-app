@@ -74,6 +74,7 @@ set countryCode(value: any) {
       return;
     }
 
+
     this.errorMessage.set(null);
     this.isLoading.set(true);
     console.log('🚀 Despegando petición HTTP hacia el servicio Geoapify...');
@@ -91,4 +92,15 @@ set countryCode(value: any) {
       }
     });
   }
+
+  translateCategory(cat: string): string {
+      const categories: any = {
+        'tourism.sights': 'Lugar Turístico',
+        'entertainment.culture': 'Cultura y Arte',
+        'heritage': 'Patrimonio Histórico',
+        'tourism.attraction': 'Atracción',
+        'natural': 'Naturaleza'
+      };
+      return categories[cat] || 'Interés General';
+    }
 }

@@ -58,16 +58,12 @@
       @if (selectCountry()) {
 
         <!-- Lugares que ver (Geoapify)-->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="mt-4 bg-white p-8 rounded-3xl shadow-lg border border-gray-100">
           <country-attractions
             [countryCode]="selectCountry()!.cca2"
             [lat]="selectCountry()!.latlng[0]"
             [lng]="selectCountry()!.latlng[1]"
           />
-        </div>
-
-        <div>
-            <h3>Hola</h3>
         </div>
       }
     </article>

@@ -22,8 +22,8 @@ export class Geoapify {
       .set('limit', `${limit}`)
       .set('apiKey', apiKey);
 
-    const requestUrl = `${this.baseUrl}?${params.toString()}`;
-    console.log('🔗 URL FINAL ENVIADA:', requestUrl);
+  // En tu archivo geoapify.service.ts
+  const url = `${this.baseUrl}?categories=tourism.sights,entertainment.culture,heritage&filter=circle:${lng},${lat},5000&bias=proximity:${lng},${lat}&limit=${limit}&lang=es&apiKey=${apiKey}`;
 
     return this.http.get<any>(this.baseUrl, { params }).pipe(
       map(response => {
