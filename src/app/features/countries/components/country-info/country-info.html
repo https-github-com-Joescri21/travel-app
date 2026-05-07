@@ -23,19 +23,19 @@
     <p class="text-sm flex items-center gap-2">
       <span class="text-pegasus-accent">📍</span>
       <span class="text-pegasus-muted font-medium">Capital:</span>
-      <span class="text-pegassus-highlight font-bold">{{ country().capital }}</span>
+      <span class="text-pegasus-bordert font-bold">{{ country().capital }}</span>
     </p>
 
     <p class="text-sm flex items-center gap-2">
       <span class="text-pegasus-accent">🌍</span>
       <span class="text-pegasus-muted font-medium">Continente:</span>
-      <span class="text-pegassus-highlight font-bold">{{ traducirContinente(country().continents[0]) }}</span>
+      <span class="text-pegasus-border font-bold">{{ traducirContinente(country().continents[0]) }}</span>
     </p>
 
     <p class="text-sm flex items-center gap-2">
       <span class="text-pegasus-accent">👥</span>
       <span class="text-pegasus-muted font-medium">Población:</span>
-      <span class="text-pegassus-highlight font-bold">{{ country().population | number }}</span>
+      <span class="text-pegasus-border font-bold">{{ country().population | number }}</span>
     </p>
 
     @if (country().currencies) {
@@ -43,7 +43,7 @@
       <span class="text-pegasus-accent">💰</span>
       <span class="text-pegasus-muted font-medium">Moneda:</span>
       @for (curr of country().currencies | keyvalue; track curr.key) {
-      <span class="text-pegassus-highlight font-bold">
+      <span class="text-pegasus-border font-bold">
         {{ $any(curr.value).name }} ({{ $any(curr.value).symbol }})
       </span>
       }
