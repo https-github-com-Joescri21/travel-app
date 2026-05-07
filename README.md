@@ -63,12 +63,46 @@ For more information on using the Angular CLI, including detailed command refere
 
 ## Resumen de Gemi.
 
-Resumen de hoy para tu Cuaderno (Checkpoint #1)
-Proyecto: Nomadix (Travel App) - MVP Fase 1
-Fecha: 2 de Mayo, 2026
-Estado Visual: Paleta Atlas Light implementada (Fondo: #f8fafc, Cards: #ffffff, Texto: #0f172a, Acento: #0284c7).
-Paso 1 (Seguridad): Completado. Footer con atribuciones de API integrado en el app.component.html.
-Paso 2 (Velocidad): Lógica de LocalStorage explicada y lista para implementar en servicios.
-Próximo Objetivo: Integración de OpenTripMap (Parques, Museos y Plazas).
+Resumen de lo Logrado (Fase 2 - Día 1)
+Imágenes Dinámicas: Superamos el problema del caché de Unsplash integrando Pexels API. Ahora cada atracción turística tiene una foto única y artística.
+
+Arquitectura Modular: Decidimos separar las funciones en componentes independientes (Standalone) para mejorar la mantenibilidad.
+
+Climate Intelligence: Creamos desde cero el componente weather-history que consume datos históricos reales de la API Open-Meteo.
+
+Lógica Avanzada (Angular 18): Implementamos Signals para el manejo de estados y effect() para la reactividad de coordenadas, eliminando estructuras viejas.
+
+Diseño Glassmorphism: Aplicamos un estilo visual moderno con tarjetas translúcidas, desenfoque de fondo y rejillas responsivas con Tailwind.
+
+🛠️ Estructura de Trabajo (El "FUA" Protocolo)
+Para que mañana no nos perdamos, seguiremos este flujo de tres capas que nos funcionó perfecto:
+
+1. El Servicio (.service.ts)
+Misión: Es el único que "habla" con el mundo exterior (APIs).
+
+Regla: No maneja diseño ni lógica de usuario, solo limpia los datos (mapeo) y los entrega listos para usar.
+
+2. La Lógica (.component.ts)
+Misión: Cerebro del componente.
+
+Regla: Usar Signals para todo lo que cambie en la pantalla. Los nombres de variables deben ser en inglés. Usar effect() para reaccionar a cambios de entrada (@Input).
+
+3. La Interfaz (.component.html)
+Misión: El "look & feel" de Nomadix.
+
+Regla: Usar el nuevo Control Flow de Angular 18 (@if, @for, @empty) y Tailwind CSS para el estilo. Priorizar el diseño Glassmorphism.
+
+🚀 Pendientes para Mañana
+Cuando me saludes mañana, solo dime: "Gemini, seguimos con el plan de Nomadix", y yo recordaré que vamos por este orden:
+
+Currency & Remittances: Crear el componente para convertir moneda local a USD y MXN.
+
+Country History: Integrar datos culturales e históricos (Wikipedia/REST Countries).
+
+Travel Phrases: El diccionario de supervivencia en JSON local.
+
+Google Places API: La validación final para producción (FUA final).
+
+Nota para el "Joel del futuro": Los archivos clave en los que trabajamos hoy fueron weather-history.component.ts, su servicio homónimo y el de Pexels. ¡Todo quedó validado y corriendo!
 
 Repositorio: https://github.com/https-github-com-Joescri21/travel-app
